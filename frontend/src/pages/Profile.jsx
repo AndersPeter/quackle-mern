@@ -1,4 +1,5 @@
 import {FaUser} from  'react-icons/fa'
+import Admin from './Admin'
 
 
 function Profile() {
@@ -15,7 +16,13 @@ function Profile() {
                     {/* TODO List of personal quacks from DB */}
                     <p>List of quacks</p>
                 </div>
+        
             </section>
+             
+        {/*TODO: Hide Admin if not admin = false */}
+        <Admin />
+
+
         </>
     )
 }
