@@ -16,7 +16,7 @@ function Login() {
 
   const dispatch = useDispatch()
 
-  const { user, isLoading, isSucces, message } =
+  const { user, isLoading, isSuccess, message } =
     useSelector(
       state => state.auth
     )
