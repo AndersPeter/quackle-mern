@@ -19,6 +19,7 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/quacks", require("./routes/quackRoutes"));
 
 app.use(errorHandler);
 

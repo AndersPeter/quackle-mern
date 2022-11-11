@@ -8,8 +8,8 @@ function Profile() {
             <section className="heading">
                 <h1>
                     <FaUser /> Profile
-                    <p>Your Qaucking so far</p>
                 </h1>
+                <p>Your Qaucking so far</p>
             </section>
             <section className="answers">
                 <div className="answears_list">

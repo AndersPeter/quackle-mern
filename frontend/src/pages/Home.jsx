@@ -38,7 +38,7 @@ function Home() {
       <section className='form'>
         <form onSubmit={onSubmit}>
           <div className="form-group">
-            <input type="text" id='text' name='text' value={text} onChange={onChange} placeholder='Please write your quack' required />
+            <textarea rows="4" type="text"  id='text' name='text' value={text} onChange={onChange} placeholder='Please write your quack' required />
           </div>
           <div className="form-group">
             <button className="btn btn-block">Quack it!</button>
