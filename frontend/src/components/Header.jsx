@@ -27,10 +27,16 @@ function Header() {
                             <button className="btn" onClick={OnLogout}> <FaSignOutAlt /> Logout</button>
                         </li>
                         <li>
+                            <Link to='/all-quacks'>
+                                <FaUser /> All your Quacks
+                            </Link>
+                        </li>
+                        <li>
                             <Link to='/profile'>
                                 <FaUser /> Profile
                             </Link>
                         </li>
+                    
                     </>
                 ) : (
                     <>

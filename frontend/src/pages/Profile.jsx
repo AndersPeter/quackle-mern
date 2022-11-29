@@ -9,14 +9,6 @@ function Profile() {
                 <h1>
                     <FaUser /> Profile
                 </h1>
-                <p>Your Qaucking so far</p>
-            </section>
-            <section className="answers">
-                <div className="answears_list">
-                    {/* TODO List of personal quacks from DB */}
-                    <p>List of quacks</p>
-                </div>
-        
             </section>
              
         {/*TODO: Hide Admin if not admin = false */}
