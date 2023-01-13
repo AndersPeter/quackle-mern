@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
+import {useSelector} from 'react-redux'
+
 
 function Home() {
+  const {user} = useSelector((state)=> state.auth)
+  const [name] = useState(user.name)
+  const [email] = useState(user.email)
+
   const [formData, setFormData] = useState({
     text: ''
   })
@@ -33,13 +39,22 @@ function Home() {
       </section>
 
       <section className="answear">
-        <h3 className="answear_heading">Your quack to the question</h3>
+        <h3 className="answear_heading">Quack here</h3>
       </section>
       <section className='form'>
         <form onSubmit={onSubmit}>
           <div className="form-group">
-            <textarea rows="4" type="text"  id='text' name='text' value={text} onChange={onChange} placeholder='Please write your quack' required />
+            <label htmlFor='name'>Quackers Name</label>
+            <input type="text" className='form-control' value={name} disabled />
+            <label htmlFor='email'>Quackers email</label>
+            <input type="text" className='form-control' value={email} disabled />
+
           </div>
+          <div className="form-group">
+            <label htmlFor="Quack">Your quack to the question</label>
+            <textarea rows="4" type="text"  id='text' name='text' value={text} onChange={onChange} placeholder='Please write your quack here' required />
+          </div>
+
           <div className="form-group">
             <button className="btn btn-block">Quack it!</button>
           </div>
