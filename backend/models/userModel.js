@@ -9,7 +9,6 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please add an email'],
         unique: true,
-
     },
     password: {
         type: String,
@@ -18,8 +17,31 @@ const userSchema = mongoose.Schema({
     isAdmin: {
         type: Boolean,
         required: true,
-        default: false
-        },
+        default: false,
+    },
+    questionFrequency: {
+        type: String,
+        enum: ['daily', 'weekly', 'monthly'],
+        default: 'daily',
+    },
+    currentQuestionIndex: {
+        type: Number,
+        default: 0,
+    },
+    lastQuestionAssignedAt: {
+        type: Date,
+    },
+    currentStreak: {
+        type: Number,
+        default: 0,
+    },
+    emailReminders: {
+        type: Boolean,
+        default: false,
+    },
+    lastReminderSentAt: {
+        type: Date,
+    },
     },
     {
         timestamps: true,
