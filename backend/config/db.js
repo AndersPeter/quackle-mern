@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const connectDB = async () => {
-    console.log('MONGO_URI set:', !!process.env.MONGO_URI)
+    console.log('ENV KEYS:', Object.keys(process.env).join(', '))
     try {
         const conn = await mongoose.connect(process.env.MONGO_URI)
         console.log(`MongoDB Connected: ${conn.connection.host}`);
