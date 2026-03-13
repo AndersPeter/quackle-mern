@@ -22,13 +22,41 @@ const login = async (userData) => {
   return response.data
 }
 
+// Update question frequency
+const updateFrequency = async (frequency, token) => {
+  const response = await axios.put(
+    API_URL + 'frequency',
+    { frequency },
+    { headers: { Authorization: `Bearer ${token}` } }
+  )
+  if (response.data) {
+    localStorage.setItem('user', JSON.stringify(response.data))
+  }
+  return response.data
+}
+
+// Update notification preferences
+const updateNotifications = async (emailReminders, token) => {
+  const response = await axios.put(
+    API_URL + 'notifications',
+    { emailReminders },
+    { headers: { Authorization: `Bearer ${token}` } }
+  )
+  if (response.data) {
+    localStorage.setItem('user', JSON.stringify(response.data))
+  }
+  return response.data
+}
+
 // Logout user
 const logout = () => localStorage.removeItem('user')
 
 const authService = {
   register,
-  logout,
   login,
+  logout,
+  updateFrequency,
+  updateNotifications,
 }
 
 export default authService

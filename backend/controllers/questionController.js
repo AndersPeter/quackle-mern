@@ -166,10 +166,16 @@ const updateQuestion = asyncHandler(async (req, res) => {
     throw new Error('Question not found')
   }
 
-  const updated = await Question.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true,
-  })
+  const { text, theme, author } = req.body
+  const updated = await Question.findByIdAndUpdate(
+    req.params.id,
+    {
+      ...(text !== undefined && { text: xss(text) }),
+      ...(theme !== undefined && { theme: xss(theme) }),
+      ...(author !== undefined && { author: xss(author) }),
+    },
+    { new: true, runValidators: true }
+  )
 
   res.json(updated)
 })

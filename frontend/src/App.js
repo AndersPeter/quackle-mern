@@ -8,26 +8,31 @@ import PrivateRoute from "./components/PrivateRoute";
 import Register from "./pages/Register";
 import Admin from "./pages/Admin";
 import Profile from "./pages/Profile";
-import AllQuacks from "./pages/AllQuacks";
+import About from "./pages/About";
 
 function App() {
   return (
     <>
       <Router>
-        <div className="container"></div>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/all-quacks" element={<PrivateRoute />}>
-            <Route path="/all-quacks" element={<AllQuacks />} />
-          </Route>
-        </Routes>
+        <div className="app-shell">
+          <Header />
+          <main className="page">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/profile" element={<PrivateRoute />}>
+                <Route path="/profile" element={<Profile />} />
+              </Route>
+              <Route path="/admin" element={<PrivateRoute />}>
+                <Route path="/admin" element={<Admin />} />
+              </Route>
+            </Routes>
+          </main>
+        </div>
       </Router>
-      <ToastContainer />
+      <ToastContainer position="bottom-right" />
     </>
   );
 }

@@ -29,12 +29,12 @@ function Login() {
         toast.error(message)
       }
   
-      //Redirect when logged in
-      if (isSuccess || user) {
+      // Redirect when logged in
+      if (user) {
         navigate('/')
       }
       dispatch(reset())
-    }, [isError, isSuccess, user, message, navigate, dispatch])
+    }, [isError, user, message, navigate, dispatch])
   
 
   const onChange = (e) => {
@@ -59,27 +59,27 @@ function Login() {
   }
 
   return (
-    <>
+    <div className="auth-page">
       <section className="heading">
-        <h1>
-          <FaSignInAlt /> Login
-        </h1>
-        <p>Please login</p>
+        <h1><FaSignInAlt /> Welcome back</h1>
+        <p>Log in to see today's question</p>
       </section>
-      <section className="form">
+      <div className="card">
         <form onSubmit={onSubmit}>
           <div className="form-group">
-            <input type="email" className="form-control" id='email' name='email' value={email} onChange={onChange} placeholder='Enter your email' required />
+            <label htmlFor="email">Email</label>
+            <input type="email" id="email" name="email" value={email} onChange={onChange} placeholder="you@example.com" required />
           </div>
           <div className="form-group">
-            <input type="password" className="form-control" id='password' name='password' value={password} onChange={onChange} placeholder='Enter your password' required />
+            <label htmlFor="password">Password</label>
+            <input type="password" id="password" name="password" value={password} onChange={onChange} placeholder="••••••••" required />
           </div>
           <div className="form-group">
-            <button className="btn btn-block">Login</button>
+            <button className="btn btn-primary btn-block">Log in</button>
           </div>
         </form>
-      </section>
-    </>
+      </div>
+    </div>
   )
 }
 

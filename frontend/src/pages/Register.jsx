@@ -29,12 +29,12 @@ function Register() {
     }
 
     // Redirect when logged in
-    if (isSuccess || user) {
+    if (user) {
       navigate('/')
     }
 
     dispatch(reset())
-  }, [isError, isSuccess, user, message, navigate, dispatch])
+  }, [isError, user, message, navigate, dispatch])
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -64,34 +64,35 @@ function Register() {
   }
 
   return (
-    <>
+    <div className="auth-page">
       <section className="heading">
-        <h1>
-          <FaUser /> Register
-        </h1>
-        <p>Please create an account</p>
-
+        <h1><FaUser /> Create account</h1>
+        <p>Join the Quackel community</p>
       </section>
-      <section className="form">
+      <div className="card">
         <form onSubmit={onSubmit}>
           <div className="form-group">
-            <input type="text" className="form-control" id='name' name='name' value={name} onChange={onChange} placeholder='Enter your name' required />
+            <label htmlFor="name">Name</label>
+            <input type="text" id="name" name="name" value={name} onChange={onChange} placeholder="Your name" required />
           </div>
           <div className="form-group">
-            <input type="email" className="form-control" id='email' name='email' value={email} onChange={onChange} placeholder='Enter your email' required />
+            <label htmlFor="email">Email</label>
+            <input type="email" id="email" name="email" value={email} onChange={onChange} placeholder="you@example.com" required />
           </div>
           <div className="form-group">
-            <input type="password" className="form-control" id='password' name='password' value={password} onChange={onChange} placeholder='Enter your password' required />
+            <label htmlFor="password">Password</label>
+            <input type="password" id="password" name="password" value={password} onChange={onChange} placeholder="••••••••" minLength={6} required />
           </div>
           <div className="form-group">
-            <input type="password" className="form-control" id='password2' name='password2' value={password2} onChange={onChange} placeholder='Confirm password' required />
+            <label htmlFor="password2">Confirm password</label>
+            <input type="password" id="password2" name="password2" value={password2} onChange={onChange} placeholder="••••••••" required />
           </div>
           <div className="form-group">
-            <button className="btn btn-block">Submit</button>
+            <button className="btn btn-primary btn-block">Create account</button>
           </div>
         </form>
-      </section>
-    </>
+      </div>
+    </div>
   )
 };
 

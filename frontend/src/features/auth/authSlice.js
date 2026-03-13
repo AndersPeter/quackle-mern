@@ -50,6 +50,38 @@ export const logout = createAsyncThunk("auth/logout", async () => {
   await authService.logout();
 });
 
+// Update notification preferences
+export const updateNotifications = createAsyncThunk(
+  "auth/updateNotifications",
+  async (emailReminders, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await authService.updateNotifications(emailReminders, token);
+    } catch (error) {
+      const message =
+        (error.response?.data?.message) || error.message || error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Update question frequency
+export const updateFrequency = createAsyncThunk(
+  "auth/updateFrequency",
+  async (frequency, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await authService.updateFrequency(frequency, token);
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -93,6 +125,12 @@ export const authSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
+      })
+      .addCase(updateFrequency.fulfilled, (state, action) => {
+        state.user = action.payload;
+      })
+      .addCase(updateNotifications.fulfilled, (state, action) => {
+        state.user = action.payload;
       });
   },
 });

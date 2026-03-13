@@ -1,5 +1,5 @@
 {
-  "name": "quackle",
+  "name": "quackel",
   "version": "1.0.0",
   "description": "Question of the day",
   "main": "server.js",
@@ -7,7 +7,8 @@
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
     "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Anders Peter Sørensen",
   "license": "MIT",
@@ -15,11 +16,18 @@
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "concurrently": "^7.5.0",
+    "cors": "^2.8.6",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^8.3.1",
+    "helmet": "^8.1.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.7.0"
+    "mongoose": "^6.13.9",
+    "node-cron": "^4.2.1",
+    "resend": "^6.9.3",
+    "xss": "^1.0.15"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
