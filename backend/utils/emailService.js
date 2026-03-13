@@ -1,11 +1,14 @@
 const { Resend } = require('resend')
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000'
 const FROM = process.env.RESEND_FROM || 'Quackel <onboarding@resend.dev>'
 
 const sendNewQuestionReminder = async ({ name, email }) => {
+  if (!process.env.RESEND_API_KEY) {
+    console.warn('RESEND_API_KEY not set — skipping email reminder')
+    return
+  }
+  const resend = new Resend(process.env.RESEND_API_KEY)
   const { error } = await resend.emails.send({
     from: FROM,
     to: email,
